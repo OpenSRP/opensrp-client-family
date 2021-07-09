@@ -5,19 +5,20 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
-import com.vijay.jsonwizard.activities.JsonWizardFormActivity;
+import com.vijay.jsonwizard.activities.NoLocaleFormConfigurationJsonWizardFormActivity;
 
 import org.smartregister.family.delegates.FamilyWizardFormDelegate;
 import org.smartregister.family.util.Constants;
 
-public class FamilyWizardFormActivity extends JsonWizardFormActivity {
+public class NoLocaleFamilyWizardFormActivity extends NoLocaleFormConfigurationJsonWizardFormActivity {
 
-    private FamilyWizardFormDelegate<FamilyWizardFormActivity> delegate;
+    private FamilyWizardFormDelegate<NoLocaleFamilyWizardFormActivity> delegate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boolean enableOnCloseDialog = getIntent().getBooleanExtra(Constants.WizardFormActivity.EnableOnCloseDialog, true);
+        boolean enableOnCloseDialog = getIntent()
+                .getBooleanExtra(Constants.WizardFormActivity.EnableOnCloseDialog, true);
         delegate = new FamilyWizardFormDelegate<>(enableOnCloseDialog);
     }
 
@@ -44,7 +45,7 @@ public class FamilyWizardFormActivity extends JsonWizardFormActivity {
     @Override
     protected void attachBaseContext(android.content.Context base) {
         // get language from prefs
-        delegate.attachBaseContext(this, base, context -> FamilyWizardFormActivity.super.attachBaseContext(context));
+        delegate.attachBaseContext(this, base, context -> NoLocaleFamilyWizardFormActivity.super.attachBaseContext(context));
     }
-}
 
+}
